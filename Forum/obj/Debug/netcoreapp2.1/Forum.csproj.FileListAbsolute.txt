@@ -34,3 +34,7 @@ C:\Users\arman\OneDrive\Documentos\Escritorio\Eduardo Rodriguez\Forum\Forum\obj\
 C:\Users\arman\OneDrive\Documentos\Escritorio\Eduardo Rodriguez\Forum\Forum\obj\Debug\netcoreapp2.1\Forum.csproj.CopyComplete
 C:\Users\arman\OneDrive\Documentos\Escritorio\Eduardo Rodriguez\Forum\Forum\obj\Debug\netcoreapp2.1\Razor\Views\Home\Find.g.cshtml.cs
 C:\Users\arman\OneDrive\Documentos\Escritorio\Eduardo Rodriguez\Forum\Forum\obj\Debug\netcoreapp2.1\UserSecretsAssemblyInfo.cs
+C:\Users\arman\OneDrive\Documentos\Escritorio\Eduardo Rodriguez\Forum\Forum\obj\Debug\netcoreapp2.1\Razor\Views\Home\CharacterDetails.g.cshtml.cs
+C:\Users\arman\OneDrive\Documentos\Escritorio\Eduardo Rodriguez\Forum\Forum\obj\Debug\netcoreapp2.1\Razor\Views\Home\ComicDetails.g.cshtml.cs
+C:\Users\arman\OneDrive\Documentos\Escritorio\Eduardo Rodriguez\Forum\Forum\obj\Debug\netcoreapp2.1\Razor\Views\Home\CreatorDetails.g.cshtml.cs
+C:\Users\arman\OneDrive\Documentos\Escritorio\Eduardo Rodriguez\Forum\Forum\obj\Debug\netcoreapp2.1\Razor\Views\Home\SerieDetails.g.cshtml.cs

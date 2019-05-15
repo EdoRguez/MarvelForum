@@ -1,0 +1,127 @@
+﻿@model IEnumerable<Forum.Models.Character>
+@{
+    ViewData["Title"] = "Character Details";
+}
+
+@if (Model.Count() > 0)
+{
+    <br />
+    <div class="container">
+        @foreach (var character in Model)
+        {
+
+            <div class="border rounded">
+                <div class="row">
+                    <div class="col-sm-12 col-md-2">
+                        @{ var image = character.Thumbnail.Path + "/portrait_fantastic." + character.Thumbnail.Extension; }
+                        <img src="@image" class="img-thumbnail" />
+                    </div>
+                    <div class="col-sm-12 col-md-10 p-3">
+                        <h4>@character.Name</h4>
+                        <p>@character.Description</p>
+                        <a href="@character.Urls.ElementAt(0).url" target="_blank">Get more info here!</a> <br />
+                        <small class="small">@character.Modified</small>
+                    </div>
+                </div>
+        
+                <hr />
+        
+
+            
+            <div class="row p-3">
+
+                <div class="col-sm-12 col-md-6">
+                    <h2>Comics List</h2>
+                    <br />
+                    <ul>
+                        @foreach (var item in character.Comics.Items)
+                        {
+                            {
+                                int inicio = 43;
+                                int final = item.ResourceUri.Trim().Length;
+                                string comicId = item.ResourceUri.Substring(inicio, final - inicio);
+
+                                <li><a asp-action="ComicDetails" asp-route-id=@comicId>@item.Name</a></li>
+                            }
+                        }
+                    </ul>
+                </div>
+                <div class="col-sm-12 col-md-6">
+                    <h2>Series List</h2>
+                    <br />
+                    <ul>
+                        @foreach (var item in character.Series.Items)
+                        {
+                            {
+                                var inicio = 43;
+                                var final = item.ResourceUri.Trim().Length;
+                                var serieId = item.ResourceUri.Substring(inicio, final - inicio);
+
+
+                                <li><a asp-action="SerieDetails" asp-route-id=@serieId>@item.Name</a></li>
+                            }
+                        }
+                    </ul>
+                </div>
+            </div>
+            </div>
+
+            <br />
+            <hr />
+            <br />
+                            }
+    </div>
+}
+else
+{ 
+<div class="container">
+    <div class="d-flex flex-column align-items-center">
+        <img src="~/images/error404.jpg" style="height: 55%; width: 65%" />
+        <br />
+        <form asp-action="Redireccionador" method="post">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-md-10 col-lg-8">
+                        <div class="card card-sm">
+                            <div class="card-body row no-gutters align-items-center">
+                                <div class="col-auto">
+                                    <i class="fas fa-search h4 text-body"></i>
+                                </div>
+                                <div class="col">
+                                    <input class="form-control form-control-lg form-control-borderless" type="search" placeholder="Search name" name="searchValue">
+                                </div>
+                                <div class="col-auto ml-3">
+                                    <input class="btn btn-lg btn-danger" type="submit" value="Search" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end of col-->
+                </div>
+                <div class="row justify-content-center mt-3">
+                    <div class="card card-sm">
+                        <div class="card-body row no-gutters align-items-center">
+                            <div class="form-check mx-5">
+                                <input class="form-check-input" type="radio" name="radioValue" id="radioCharacter" value="character" checked>
+                                <label class="form-check-label" for="radioCharacter">Character</label>
+                            </div>
+                            <div class="form-check mx-5">
+                                <input class="form-check-input" type="radio" name="radioValue" id="radioComic" value="comic">
+                                <label class="form-check-label" for="radioComic">Comic</label>
+                            </div>
+                            <div class="form-check mx-5">
+                                <input class="form-check-input" type="radio" name="radioValue" id="radioCreator" value="creator">
+                                <label class="form-check-label" for="radioCreator">Creator</label>
+                            </div>
+                            <div class="form-check mx-5">
+                                <input class="form-check-input" type="radio" name="radioValue" id="radioSeries" value="series">
+                                <label class="form-check-label" for="radioSeries">Series</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+}

@@ -1,0 +1,149 @@
+﻿@model IEnumerable<Forum.Models.Series>
+@{
+    ViewData["Title"] = "Serie Details";
+}
+
+@if (Model.Count() > 0)
+{
+<br />
+<div class="container">
+    @foreach (var serie in Model)
+    {
+
+        <div class="border rounded">
+            <div class="row">
+                <div class="col-sm-12 col-md-2">
+                    @{ var image = serie.Thumbnail.Path + "/portrait_fantastic." + serie.Thumbnail.Extension; }
+                    <img src="@image" class="img-thumbnail" />
+                </div>
+                <div class="col-sm-12 col-md-10">
+                    <h4>@serie.Title</h4>
+                    <p>@serie.Description</p>
+                    <small class="small">Start Year: @serie.StartYear</small>
+                    <small class="small">End Year: @serie.EndYear</small>
+                    <a href="@serie.Urls.ElementAt(0).url" target="_blank">Get more info here!</a> <br />
+                    <small class="small">@serie.Modified</small>
+                </div>
+            </div>
+        
+
+            <hr />
+
+
+
+            <div class="row p-3">
+
+                <div class="col-sm-12 col-md-4">
+                    <h2>Characters List</h2>
+                    <br />
+                    <ul>
+                        @foreach (var item in serie.Characters.Items)
+                        {
+                            {
+                                int inicio = 47;
+                                int final = item.ResourceUri.Trim().Length;
+                                string characterId = item.ResourceUri.Substring(inicio, final - inicio);
+
+                                <li><a asp-action="CharacterDetails" asp-route-id=@characterId>@item.Name</a></li>
+                            }
+                        }
+                    </ul>
+                </div>
+                <div class="col-sm-12 col-md-4">
+                    <h2>Creators List</h2>
+                    <br />
+                    <ul>
+                        @foreach (var item in serie.Creators.Items)
+                        {
+                            {
+                                var inicio2 = 45;
+                                var final2 = item.ResourceUri.Trim().Length;
+                                var creatorId = item.ResourceUri.Substring(inicio2, final2 - inicio2);
+
+
+                                <li><a asp-action="CreatorDetails" asp-route-id=@creatorId>@item.Name</a></li>
+                            }
+                        }
+                    </ul>
+                </div>
+
+                <div class="col-sm-12 col-md-4">
+                    <h2>Comics List</h2>
+                    <br />
+                    <ul>
+                        @foreach (var item in serie.Comics.Items)
+                        {
+                            {
+                                var inicio2 = 43;
+                                var final2 = item.ResourceUri.Trim().Length;
+                                var comicId = item.ResourceUri.Substring(inicio2, final2 - inicio2);
+
+
+                                <li><a asp-action="ComicDetails" asp-route-id=@comicId>@item.Name</a></li>
+                            }
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <br />
+        <hr />
+        <br />
+
+                        }
+</div>
+}
+else
+{
+<div class="container">
+    <div class="d-flex flex-column align-items-center">
+        <img src="~/images/error404.jpg" style="height: 55%; width: 65%" />
+        <br />
+        <form asp-action="Redireccionador" method="post">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-md-10 col-lg-8">
+                        <div class="card card-sm">
+                            <div class="card-body row no-gutters align-items-center">
+                                <div class="col-auto">
+                                    <i class="fas fa-search h4 text-body"></i>
+                                </div>
+                                <div class="col">
+                                    <input class="form-control form-control-lg form-control-borderless" type="search" placeholder="Search name" name="searchValue">
+                                </div>
+                                <div class="col-auto ml-3">
+                                    <input class="btn btn-lg btn-danger" type="submit" value="Search" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end of col-->
+                </div>
+                <div class="row justify-content-center mt-3">
+                    <div class="card card-sm">
+                        <div class="card-body row no-gutters align-items-center">
+                            <div class="form-check mx-5">
+                                <input class="form-check-input" type="radio" name="radioValue" id="radioCharacter" value="character" checked>
+                                <label class="form-check-label" for="radioCharacter">Character</label>
+                            </div>
+                            <div class="form-check mx-5">
+                                <input class="form-check-input" type="radio" name="radioValue" id="radioComic" value="comic">
+                                <label class="form-check-label" for="radioComic">Comic</label>
+                            </div>
+                            <div class="form-check mx-5">
+                                <input class="form-check-input" type="radio" name="radioValue" id="radioCreator" value="creator">
+                                <label class="form-check-label" for="radioCreator">Creator</label>
+                            </div>
+                            <div class="form-check mx-5">
+                                <input class="form-check-input" type="radio" name="radioValue" id="radioSeries" value="series">
+                                <label class="form-check-label" for="radioSeries">Series</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+}
