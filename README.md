@@ -1,4 +1,4 @@
-# MAREL FORUM
+# MARVEL FORUM
 
 Marvel Forum is a web page where you can get information about characters, comics, creators, etc. Also, you can register and login using email or username. You can access to Roles to create and assign role to user as well.
 
