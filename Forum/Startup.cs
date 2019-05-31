@@ -12,6 +12,9 @@ using Microsoft.EntityFrameworkCore;
 using Forum.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Forum.Models;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using Forum.Areas.Identity.Services;
 
 namespace Forum
 {
@@ -37,8 +40,19 @@ namespace Forum
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>()
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            services.AddIdentity<ApplicationUser, ApplicationRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
+
+            services.AddScoped<IEmailSender, EmailSender>();
+
+            services.Configure<IdentityOptions>(options =>
+            {
+                //options.User.RequireUniqueEmail = true;
+                options.Password.RequiredLength = 6;
+                options.Password.RequireNonAlphanumeric = true;
+            });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }

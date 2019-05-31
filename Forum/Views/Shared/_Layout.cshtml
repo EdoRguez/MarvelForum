@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Marvel Forum</title>
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
@@ -39,7 +39,8 @@
                         <a class="nav-link" asp-controller="Home" asp-action="About">About</a>
                     </li>
                 </ul>
-                <h1 class="text-danger" style="font-family: 'Obelix'; font-size: 25px">Marvel Forum</h1>
+                <h1 class="mr-auto text-center text-danger" style="font-family: 'Obelix'; font-size: 25px">Marvel Forum</h1>
+                <partial name="_LoginPartial" />
             </div>
         </div>
     </nav>
@@ -50,10 +51,21 @@
         @RenderBody()
         <hr />
     </div>
-    <footer style="background: red; position: relative;height: 90px;margin-top: 20px;clear: both;">
-        <div class="container">
-            <p>Made by Eduardo Rodríguez</p>
-            <p>&copy; 2019 - Marvel Forum</p>
+    <footer style="background: black; position: relative;height: 90px;margin-top: 20px;clear: both;">
+        <div class="container text-white p-1">
+            <div class="d-flex justify-content-between">
+                <div>
+                    <p>Made by Eduardo Rodríguez</p>
+                    <p>&copy; 2019 - Marvel Forum</p>
+                </div>
+                <div class="align-self-center">
+                    <a href="https://www.github.com/EdoRguez" target="_blank" style="color:white" ><i class="fab fa-2x fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/eduardo-rodr%C3%ADguez-pico-4b6576151/" target="_blank" style="color: white"><i class="fab fa-2x fa-linkedin"></i></a>
+                    <a href="https://www.instagram.com/edorguez/" target="_blank" style="color: white"><i class="fab fa-2x fa-instagram"></i></a>
+                    <a href="mailto:edro998@gmail.com?Subject=Contacto%20Marvel%20Forum" target="_top" style="color: white"><i class="fas fa-2x fa-envelope-square"></i></a>
+                </div>
+
+            </div>
         </div>
     </footer>
 

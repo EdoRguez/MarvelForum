@@ -10,7 +10,7 @@
                 <div class="card card-sm">
                     <div class="card-body row no-gutters align-items-center">
                         <div class="col-auto">
-                            <i class="fas fa-search h4 text-body"></i>
+                            <i class="fas fa-search mr-3"></i>
                         </div>
                         <div class="col">
                             <input class="form-control form-control-lg form-control-borderless" type="search" placeholder="Search name" name="searchValue">
@@ -86,7 +86,7 @@
                         <div class="col-sm-12 col-md-6 my-2">
                             <div class="border rounded d-flex">
                                 <div class="col-md-3">
-                                    <img src="@imageCharacter" class="img-thumbnail" alt="...">
+                                    <a asp-action="CharacterDetails" asp-route-id="@Model.Characters.ElementAt(i).Id"><img src="@imageCharacter" class="img-thumbnail" alt="..."></a>
                                 </div>
                                 <div class="col-md-9 p-2">
                                     <h6 class="">@Model.Characters.ElementAt(i).Name</h6>
@@ -102,7 +102,7 @@
                         <div class="col-sm-12 col-md-6 my-2">
                             <div class="border rounded d-flex">
                                 <div class="col-md-3">
-                                    <img src="@imageComic" class="img-thumbnail" alt="...">
+                                    <a asp-action="ComicDetails" asp-route-id="@Model.Comics.ElementAt(i).Id"><img src="@imageComic" class="img-thumbnail" alt="..."></a>
                                 </div>
                                 <div class="col-md-9 p-2">
                                     <h6 class="">@Model.Comics.ElementAt(i).Title</h6>
@@ -130,7 +130,7 @@
                             <div class="col-sm-12 col-md-6 my-2">
                                 <div class="border rounded d-flex">
                                     <div class="col-md-3">
-                                        <img src="@imageCreator" class="img-thumbnail" alt="...">
+                                        <a asp-action="CreatorDetails" asp-route-id="@Model.Creators.ElementAt(i).Id"><img src="@imageCreator" class="img-thumbnail" alt="..."></a>
                                     </div>
                                     <div class="col-md-9 p-2">
                                         <h6 class="">@Model.Creators.ElementAt(i).FullName</h6>
@@ -145,7 +145,7 @@
                             <div class="col-sm-12 col-md-6 my-2">
                                 <div class="border rounded d-flex">
                                     <div class="col-md-3">
-                                        <img src="@imageSerie" class="img-thumbnail" alt="...">
+                                        <a asp-action="SerieDetails" asp-route-id="@Model.Series.ElementAt(i).Id"><img src="@imageSerie" class="img-thumbnail" alt="..."></a>
                                     </div>
                                     <div class="col-md-9 p-2">
                                         <h6 class="">@Model.Series.ElementAt(i).Title</h6>

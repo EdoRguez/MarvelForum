@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewData["Title"] = "AddUserRole";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<h2>ADD USER ROLE</h2>
+<br />
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddUserRole" method="post">
+            <div class="form-group">
+                <label class="control-label">User Email</label>
+                <input class="form-control" name="email" />
+            </div>
+            <div class="form-group">
+                <label class="control-label">Roles List</label>
+                <select class="form-control" asp-items="@(new SelectList(ViewBag.RolesList, "Name", "Name"))" name="role">
+                    <option>Select Role</option>
+                </select>
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Add User Role" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" class="text-danger">Back to List</a>
+</div>
